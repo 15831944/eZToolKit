@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eZstd;
 
-namespace WindowsFormsApplication1
+namespace SplineInterp
 {
     public partial class Form1 : Form
     {

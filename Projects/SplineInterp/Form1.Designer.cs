@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace SplineInterp
 {
     partial class Form1
     {
