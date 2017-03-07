@@ -20,6 +20,7 @@ namespace ReverseAbaqusComments
         public static void Main(string[] args)
         {
             UI();
+
         }
 
         private static void NoneUI()
