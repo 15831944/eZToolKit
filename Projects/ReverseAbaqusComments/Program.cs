@@ -20,7 +20,6 @@ namespace ReverseAbaqusComments
         public static void Main(string[] args)
         {
             UI();
-
         }
 
         private static void NoneUI()
@@ -138,13 +137,13 @@ namespace ReverseAbaqusComments
         private static bool CheckComment(string[] lines, out Dictionary<int, bool> tagLines)
         {
             tagLines = new Dictionary<int, bool>();
-            bool needRewrite = false;
+            bool needRewrite = false; // 如果需要对文件进行重新修改，则返回 true
             string line;
             int maxLineCount = lines.Length > MaxCheckingLine ? MaxCheckingLine : lines.Length;
             for (int i = 0; i < maxLineCount; i++)
             {
                 line = lines[i];
-                bool addComment = false;
+                bool addComment = false; // true 表示后期要对其添加注释， false 表示要删除注释
                 if (CheckTag(line, "from abaqus", ref addComment))
                 {
                     tagLines.Add(i, addComment);
@@ -161,6 +160,11 @@ namespace ReverseAbaqusComments
                     needRewrite = true;
                 }
                 else if (CheckTag(line, "from textRepr", ref addComment))
+                {
+                    tagLines.Add(i, addComment);
+                    needRewrite = true;
+                }
+                else if (CheckTag(line, "from symbolicConstants", ref addComment))
                 {
                     tagLines.Add(i, addComment);
                     needRewrite = true;
